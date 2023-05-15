@@ -119,7 +119,7 @@ with col3:
     if uploaded_file3 is not None:
         @st.cache
         def load_data3():
-            dataframe3 = pd.read_csv(uploaded_file3,nrows=10)
+            dataframe3 = pd.read_csv(uploaded_file3, nrows=10)
             return dataframe3
 
         dataframe3 = load_data3()
