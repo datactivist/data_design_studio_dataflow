@@ -77,7 +77,7 @@ with col1:
     if uploaded_file1 is not None:
         @st.cache
         def load_data1():
-            dataframe1 = pd.read_csv(uploaded_file1)
+            dataframe1 = pd.read_csv(uploaded_file1, nrows=10)
             return dataframe1
 
         dataframe1 = load_data1()
@@ -98,7 +98,7 @@ with col2:
     if uploaded_file2 is not None:
         @st.cache
         def load_data2():
-            dataframe2 = pd.read_csv(uploaded_file2)
+            dataframe2 = pd.read_csv(uploaded_file2, nrows=10)
             return dataframe2
 
         dataframe2 = load_data2()
@@ -119,7 +119,7 @@ with col3:
     if uploaded_file3 is not None:
         @st.cache
         def load_data3():
-            dataframe3 = pd.read_csv(uploaded_file3)
+            dataframe3 = pd.read_csv(uploaded_file3,nrows=10)
             return dataframe3
 
         dataframe3 = load_data3()
