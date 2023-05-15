@@ -71,6 +71,10 @@ st.subheader('Throw your messy, queasy fabric in !')
 # Create three columns for the file uploaders
 col1, col2, col3 = st.columns(3)
 
+dataframe1 = None
+dataframe2 = None
+dataframe3 = None
+
 # File uploader in the first column
 with col1:
     uploaded_file1 = st.file_uploader("Fabric 1b")
@@ -84,12 +88,7 @@ with col1:
         
         # Apply random color styling to the dataframe
         styled_dataframe1 = first_10_rows1.style.applymap(lambda x: 'background-color: #{:06x}'.format(random.randint(0, 256**3-1)))
-        
-        prompt1 = prepare_prompt(first_10_rows1)
-        response1 = send_prompt_to_chatgpt(prompt1)
-        
         st.write(styled_dataframe1)  # Display the styled dataframe
-        display_response(response1)
 
 # File uploader in the second column
 with col2:
@@ -103,13 +102,8 @@ with col2:
         first_10_rows2 = dataframe2.head(10)
         
         # Apply random color styling to the dataframe
-        styled_dataframe2 = first_10_rows2.style.applymap(lambda x: 'background-color: #{:06x}'.format(random.randint(0, 256**3-1)))
-        
-        prompt2 = prepare_prompt(first_10_rows2)
-        response2 = send_prompt_to_chatgpt(prompt2)
-        
+        styled_dataframe2 = first_10_rows2.style.applymap(lambda x: 'background-color: #{:06x}'.format(random.randint(0, 256**3-1))) 
         st.write(styled_dataframe2)  # Display the styled dataframe
-        display_response(response2)
 
 # File uploader in the third column
 with col3:
@@ -124,13 +118,20 @@ with col3:
         
         # Apply random color styling to the dataframe
         styled_dataframe3 = first_10_rows3.style.applymap(lambda x: 'background-color: #{:06x}'.format(random.randint(0, 256**3-1)))
-        
-        prompt3 = prepare_prompt(first_10_rows3)
-        response3 = send_prompt_to_chatgpt(prompt3)
-        
         st.write(styled_dataframe3)  # Display the styled dataframe
-        display_response(response3)
 
+if dataframe1 is not None and dataframe2 is not None and dataframe3 is not None:
+    prompt1 = prepare_prompt(dataframe1)
+    prompt2 = prepare_prompt(dataframe2)
+    prompt3 = prepare_prompt(dataframe3)
+    
+    response1 = send_prompt_to_chatgpt(prompt1)
+    response2 = send_prompt_to_chatgpt(prompt2)
+    response3 = send_prompt_to_chatgpt(prompt3)
+    
+    display_response(response1)
+    display_response(response2)
+    display_response(response3)
 
 
 
