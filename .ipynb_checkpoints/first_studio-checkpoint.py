@@ -129,9 +129,14 @@ if dataframe1 is not None and dataframe2 is not None and dataframe3 is not None:
     response2 = send_prompt_to_chatgpt(prompt2)
     response3 = send_prompt_to_chatgpt(prompt3)
     
-    display_response(response1)
-    display_response(response2)
-    display_response(response3)
+    with col1:
+        display_response(response1)
+    
+    with col2:
+        display_response(response2)
+    
+    with col3:
+        display_response(response3)
 
 
 
