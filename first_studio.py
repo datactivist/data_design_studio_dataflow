@@ -40,6 +40,7 @@ def query_chatgpt(prompt):
     }
     response = requests.post(url, headers=headers, data=json.dumps(data))
     response_json = response.json()
+    print(response_json)
     answer = response_json['choices'][0]['message']['content']
     return answer
 
