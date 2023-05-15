@@ -9,14 +9,6 @@ import requests
 import json
 import openai
 import random
-from dotenv import load_dotenv
-import os
-
-
-# Load environment variables from .env file
-load_dotenv()
-# API key
-api_key = os.getenv('API_KEY')
 
 
 #Setting titles
@@ -26,7 +18,7 @@ st.markdown('<p style="font-size:25px">Statistics are just <b style="color:blue"
 
 # Step 2: Connect to the ChatGPT API
 def query_chatgpt(prompt):
-    api_key = os.getenv('API_KEY')
+    api_key = st.secrets["API_KEY"]
     url = 'https://api.openai.com/v1/chat/completions'
     headers = {
         'Authorization': f'Bearer {api_key}',
@@ -83,7 +75,12 @@ col1, col2, col3 = st.columns(3)
 with col1:
     uploaded_file1 = st.file_uploader("Fabric 1b")
     if uploaded_file1 is not None:
-        dataframe1 = pd.read_csv(uploaded_file1)
+        @st.cache
+        def load_data1():
+            dataframe1 = pd.read_csv(uploaded_file1)
+            return dataframe1
+
+        dataframe1 = load_data1()
         first_10_rows1 = dataframe1.head(10)
         
         # Apply random color styling to the dataframe
@@ -98,8 +95,12 @@ with col1:
 # File uploader in the second column
 with col2:
     uploaded_file2 = st.file_uploader("Fabric 2b")
-    if uploaded_file2 is not None:
-        dataframe2 = pd.read_csv(uploaded_file2)
+    @st.cache
+        def load_data2():
+            dataframe2 = pd.read_csv(uploaded_file2)
+            return dataframe2
+
+        dataframe2 = load_data2()
         first_10_rows2 = dataframe2.head(10)
         
         # Apply random color styling to the dataframe
@@ -115,7 +116,12 @@ with col2:
 with col3:
     uploaded_file3 = st.file_uploader("Fabric 3b")
     if uploaded_file3 is not None:
-        dataframe3 = pd.read_csv(uploaded_file3)
+        @st.cache
+        def load_data3():
+            dataframe3 = pd.read_csv(uploaded_file3)
+            return dataframe3
+
+        dataframe3 = load_data3()
         first_10_rows3 = dataframe3.head(10)
         
         # Apply random color styling to the dataframe
