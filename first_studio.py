@@ -17,7 +17,6 @@ st.markdown('<p style="font-size:25px">Statistics are just <b style="color:blue"
 
 
 # Step 2: Connect to the ChatGPT API
-@st.cache
 def query_chatgpt(prompt):
     api_key = st.secrets["API_KEY"]
     url = 'https://api.openai.com/v1/chat/completions'
