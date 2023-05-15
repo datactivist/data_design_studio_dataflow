@@ -5,11 +5,12 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-from io import StringIO
 import requests
 import json
 import openai
 import random
+from dotenv import load_dotenv
+import os
 
 #Setting titles
 st.title("Dataflow design studio")
@@ -18,7 +19,8 @@ st.markdown('<p style="font-size:25px">Statistics are just <b style="color:blue"
 
 # Step 2: Connect to the ChatGPT API
 def query_chatgpt(prompt):
-    api_key = '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'
+    load_dotenv('.env')
+    api_key = os.getenv('API_KEY')
     url = 'https://api.openai.com/v1/chat/completions'
     headers = {
         'Authorization': f'Bearer {api_key}',
@@ -32,6 +34,7 @@ def query_chatgpt(prompt):
     }
     response = requests.post(url, headers=headers, data=json.dumps(data))
     response_json = response.json()
+    print(response)
     answer = response_json['choices'][0]['message']['content']
     return answer
 
