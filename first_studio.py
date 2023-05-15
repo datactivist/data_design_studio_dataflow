@@ -17,6 +17,7 @@ st.markdown('<p style="font-size:25px">Statistics are just <b style="color:blue"
 
 
 # Step 2: Connect to the ChatGPT API
+@st.cache
 def query_chatgpt(prompt):
     api_key = st.secrets["API_KEY"]
     url = 'https://api.openai.com/v1/chat/completions'
@@ -38,16 +39,19 @@ def query_chatgpt(prompt):
 
 
 # Step 3: Prepare the prompt
+@st.cache
 def prepare_prompt(data):
     prompt = f"Tell me what are the two most pertinent columns/variables to understand the dataset and explain to me why. Create one sentence (max 20 words long) for each variable and use metaphors to explain. Space the two sentences:\n\n{data}"
     return prompt
 
 # Step 4: Send the prompt to ChatGPT
+@st.cache
 def send_prompt_to_chatgpt(prompt):
     answer = query_chatgpt(prompt)
     return answer
 
 # Step 5: Display the response
+@st.cache
 def display_response(response):
     words = response.split()  # Split the response into individual words
     colored_response = ""
