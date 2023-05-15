@@ -12,6 +12,13 @@ import random
 from dotenv import load_dotenv
 import os
 
+
+# Load environment variables from .env file
+load_dotenv()
+# API key
+api_key = os.getenv('API_KEY')
+
+
 #Setting titles
 st.title("Dataflow design studio")
 st.markdown('<p style="font-size:25px">Statistics are just <b style="color:blue">one face</b> of reality</p>', unsafe_allow_html=True)
