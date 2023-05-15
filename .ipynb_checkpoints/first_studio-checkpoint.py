@@ -45,7 +45,6 @@ def query_chatgpt(prompt):
     return answer
 
 
-
 # Step 3: Prepare the prompt
 def prepare_prompt(data):
     prompt = f"Tell me what are the two most pertinent columns/variables to understand the dataset and explain to me why. Create one sentence (max 20 words long) for each variable and use metaphors to explain. Space the two sentences:\n\n{data}"
