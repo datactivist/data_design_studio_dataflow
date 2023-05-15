@@ -95,7 +95,7 @@ with col1:
 # File uploader in the second column
 with col2:
     uploaded_file2 = st.file_uploader("Fabric 2b")
-    if uploaded_file1 is not None:
+    if uploaded_file2 is not None:
         @st.cache
         def load_data2():
             dataframe2 = pd.read_csv(uploaded_file2)
