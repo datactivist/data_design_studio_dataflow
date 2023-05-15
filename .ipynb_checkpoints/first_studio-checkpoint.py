@@ -76,7 +76,6 @@ col1, col2, col3 = st.columns(3)
 with col1:
     uploaded_file1 = st.file_uploader("Fabric 1b")
     if uploaded_file1 is not None:
-        @st.cache
         def load_data1():
             dataframe1 = pd.read_csv(uploaded_file1, nrows=10)
             return dataframe1
@@ -97,7 +96,6 @@ with col1:
 with col2:
     uploaded_file2 = st.file_uploader("Fabric 2b")
     if uploaded_file2 is not None:
-        @st.cache
         def load_data2():
             dataframe2 = pd.read_csv(uploaded_file2, nrows=10)
             return dataframe2
@@ -118,7 +116,6 @@ with col2:
 with col3:
     uploaded_file3 = st.file_uploader("Fabric 3b")
     if uploaded_file3 is not None:
-        @st.cache
         def load_data3():
             dataframe3 = pd.read_csv(uploaded_file3, nrows=10)
             return dataframe3
