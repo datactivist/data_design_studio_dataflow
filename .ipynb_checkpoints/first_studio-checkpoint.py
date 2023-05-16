@@ -28,7 +28,7 @@ def query_chatgpt(prompt):
         'model': 'gpt-3.5-turbo',
         'messages': [{'role': 'system', 'content': 'You are a human-data interaction designer that can explain to a five year old children some insights about dataset.'},
                      {'role': 'user', 'content': prompt}],
-        'temperature': 0.7
+        'temperature': 0.1
     }
     response = requests.post(url, headers=headers, data=json.dumps(data))
     response_json = response.json()
